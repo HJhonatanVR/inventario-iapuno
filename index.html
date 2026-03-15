@@ -32,42 +32,17 @@
   --font:       'Plus Jakarta Sans', system-ui, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: var(--font);
-  background: var(--gris-100);
-  color: var(--gris-900);
-  min-height: 100vh;
-  font-size: 15px;
-  line-height: 1.6;
-}
+body { font-family: var(--font); background: var(--gris-100); color: var(--gris-900); min-height: 100vh; font-size: 15px; line-height: 1.6; }
 
 /* HEADER */
-header {
-  background: var(--azul);
-  padding: 0 20px;
-  position: sticky; top: 0; z-index: 200;
-  box-shadow: 0 2px 12px rgba(0,0,0,.2);
-}
-.header-inner {
-  max-width: 720px; margin: 0 auto;
-  height: 62px;
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-}
+header { background: var(--azul); padding: 0 20px; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,.2); }
+.header-inner { max-width: 720px; margin: 0 auto; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .header-brand { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
-.sunat-emblem { width: 34px; height: 34px; flex-shrink: 0; }
-.header-texts { display: flex; flex-direction: column; line-height: 1.2; }
+.header-texts { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
 .header-name  { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .header-sub   { font-size: 10px; color: rgba(255,255,255,.6); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .header-stripe { height: 3px; background: var(--rojo); }
-
-#btn-login {
-  font-family: var(--font); font-size: 12px; font-weight: 600;
-  background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.25); color: #fff;
-  padding: 7px 16px; border-radius: 99px; cursor: pointer;
-  display: flex; align-items: center; gap: 6px;
-  transition: all .2s; white-space: nowrap;
-  max-width: 140px; overflow: hidden;
-}
+#btn-login { font-family: var(--font); font-size: 12px; font-weight: 600; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.25); color: #fff; padding: 7px 16px; border-radius: 99px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all .2s; white-space: nowrap; max-width: 140px; overflow: hidden; flex-shrink: 0; }
 #btn-login span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #btn-login:hover { background: rgba(255,255,255,.22); }
 #btn-login.autenticado { background: var(--rojo); border-color: var(--rojo); }
@@ -76,55 +51,29 @@ header {
 main { max-width: 720px; margin: 0 auto; padding: 24px 16px 80px; }
 
 /* ID BANNER */
-.id-banner {
-  background: var(--azul); border-radius: var(--radius);
-  padding: 14px 18px; display: flex; align-items: center; gap: 12px;
-  margin-bottom: 20px; box-shadow: var(--shadow-sm);
-}
-.id-banner-icon {
-  width: 38px; height: 38px; background: rgba(255,255,255,.15);
-  border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
+.id-banner { background: var(--azul); border-radius: var(--radius); padding: 14px 18px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+.id-banner-icon { width: 38px; height: 38px; background: rgba(255,255,255,.15); border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .id-banner-texts { flex: 1; min-width: 0; }
 .id-banner-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
 .id-banner-code  { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: .04em; }
-.id-banner-pill  {
-  font-size: 11px; padding: 4px 12px; border-radius: 99px;
-  font-weight: 700; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
-}
+.id-banner-pill  { font-size: 11px; padding: 4px 12px; border-radius: 99px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
 .pill-reg { background: rgba(255,255,255,.15); color: #fff; }
 .pill-new { background: var(--rojo); color: #fff; }
 
 /* CARD */
-.card {
-  background: var(--blanco); border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md); overflow: hidden; margin-bottom: 16px;
-}
-.card-section-title {
-  font-size: 11px; font-weight: 700; color: var(--gris-400);
-  text-transform: uppercase; letter-spacing: .1em;
-  padding: 14px 20px 10px; border-bottom: 1px solid var(--gris-200);
-  display: flex; align-items: center; gap: 7px;
-}
+.card { background: var(--blanco); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); overflow: hidden; margin-bottom: 16px; }
+.card-section-title { font-size: 11px; font-weight: 700; color: var(--gris-400); text-transform: uppercase; letter-spacing: .1em; padding: 14px 20px 10px; border-bottom: 1px solid var(--gris-200); display: flex; align-items: center; gap: 7px; }
 
 /* FOTO */
 .foto-bien { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-.foto-placeholder {
-  width: 100%; aspect-ratio: 4/3; background: var(--gris-100);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 10px; color: var(--gris-400);
-}
+.foto-placeholder { width: 100%; aspect-ratio: 4/3; background: var(--gris-100); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--gris-400); }
 .foto-placeholder svg { opacity: .35; }
 .foto-placeholder span { font-size: 12px; font-weight: 500; }
 
 /* BIEN HEADER */
 .bien-head { padding: 18px 20px 14px; border-bottom: 1px solid var(--gris-200); }
 .bien-nombre-principal { font-size: 22px; font-weight: 700; color: var(--gris-900); line-height: 1.25; margin-bottom: 10px; }
-.badge-estado {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 700; padding: 5px 14px;
-  border-radius: 99px; text-transform: uppercase; letter-spacing: .05em;
-}
+.badge-estado { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 99px; text-transform: uppercase; letter-spacing: .05em; }
 .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
 .badge-bueno   { background: var(--success-bg); color: var(--success); }
 .badge-regular { background: var(--warning-bg); color: var(--warning); }
@@ -132,75 +81,36 @@ main { max-width: 720px; margin: 0 auto; padding: 24px 16px 80px; }
 .badge-sin     { background: var(--gris-100);   color: var(--gris-600);}
 
 /* DATOS GRID */
-.datos-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--gris-200);
-}
+.datos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gris-200); }
 .dato-item { background: var(--blanco); padding: 14px 20px; }
 .dato-item.full { grid-column: 1 / -1; }
-.dato-label {
-  font-size: 10px; font-weight: 700; color: var(--gris-400);
-  text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px;
-  display: flex; align-items: center; gap: 5px;
-}
+.dato-label { font-size: 10px; font-weight: 700; color: var(--gris-400); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
 .dato-valor { font-size: 14px; font-weight: 500; color: var(--gris-900); }
 .dato-vacio { color: var(--gris-400); font-style: italic; font-weight: 400; }
 
 /* META BAR */
-.registro-meta {
-  padding: 11px 20px; background: var(--azul-pale);
-  display: flex; align-items: center; gap: 8px;
-  font-size: 12px; color: var(--azul-mid); font-weight: 500;
-  border-top: 1px solid var(--gris-200);
-}
+.registro-meta { padding: 11px 20px; background: var(--azul-pale); display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--azul-mid); font-weight: 500; border-top: 1px solid var(--gris-200); }
 
 /* NUEVO HERO */
 .nuevo-hero { text-align: center; padding: 44px 24px 32px; }
-.nuevo-icon-wrap {
-  width: 80px; height: 80px; background: var(--azul-light);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 18px; font-size: 36px;
-}
+.nuevo-icon-wrap { width: 80px; height: 80px; background: var(--azul-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 36px; }
 .nuevo-title { font-size: 20px; font-weight: 700; color: var(--azul); margin-bottom: 6px; }
 .nuevo-desc  { font-size: 13px; color: var(--gris-600); margin-bottom: 28px; line-height: 1.7; }
 
 /* BOTONES */
-.btn-primary {
-  width: 100%; background: var(--azul); color: #fff; border: none;
-  padding: 14px; border-radius: var(--radius); font-family: var(--font);
-  font-size: 14px; font-weight: 700; cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  transition: all .2s; box-shadow: 0 3px 10px rgba(0,56,118,.22);
-}
+.btn-primary { width: 100%; background: var(--azul); color: #fff; border: none; padding: 14px; border-radius: var(--radius); font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all .2s; box-shadow: 0 3px 10px rgba(0,56,118,.22); }
 .btn-primary:hover   { background: var(--azul-mid); }
 .btn-primary:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
 .btn-rojo { background: var(--rojo) !important; box-shadow: 0 3px 10px rgba(204,0,0,.2) !important; }
 .btn-rojo:hover { background: #a80000 !important; }
-
-.btn-outline {
-  background: transparent; color: var(--gris-600);
-  border: 1.5px solid var(--gris-200); padding: 9px 20px;
-  border-radius: var(--radius); font-family: var(--font);
-  font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s;
-}
+.btn-outline { background: transparent; color: var(--gris-600); border: 1.5px solid var(--gris-200); padding: 9px 20px; border-radius: var(--radius); font-family: var(--font); font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; }
 .btn-outline:hover { border-color: var(--azul); color: var(--azul); }
-
-.btn-google {
-  width: 100%; background: var(--blanco); border: 1.5px solid var(--gris-200);
-  color: var(--gris-900); padding: 13px; border-radius: var(--radius);
-  font-family: var(--font); font-size: 14px; font-weight: 600; cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  transition: all .2s; box-shadow: var(--shadow-sm);
-}
+.btn-google { width: 100%; background: var(--blanco); border: 1.5px solid var(--gris-200); color: var(--gris-900); padding: 13px; border-radius: var(--radius); font-family: var(--font); font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all .2s; box-shadow: var(--shadow-sm); }
 .btn-google:hover { border-color: var(--azul); box-shadow: var(--shadow-md); }
 
 /* LOGIN PROMO */
 .login-promo { text-align: center; padding: 28px 24px; }
-.login-promo-icon {
-  width: 56px; height: 56px; background: var(--azul-light); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 14px; font-size: 26px;
-}
+.login-promo-icon { width: 56px; height: 56px; background: var(--azul-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 26px; }
 .login-promo-title { font-size: 16px; font-weight: 700; color: var(--azul); margin-bottom: 6px; }
 .login-promo-desc  { font-size: 13px; color: var(--gris-600); margin-bottom: 20px; }
 
@@ -211,90 +121,44 @@ main { max-width: 720px; margin: 0 auto; padding: 24px 16px 80px; }
 .no-auth-desc  { font-size: 13px; color: var(--gris-600); }
 
 /* EDITOR TOPBAR */
-.editor-topbar {
-  background: var(--azul-pale); border-bottom: 2px solid var(--azul);
-  padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
-}
-.editor-topbar-title {
-  font-size: 14px; font-weight: 700; color: var(--azul);
-  display: flex; align-items: center; gap: 8px;
-}
+.editor-topbar { background: var(--azul-pale); border-bottom: 2px solid var(--azul); padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
+.editor-topbar-title { font-size: 14px; font-weight: 700; color: var(--azul); display: flex; align-items: center; gap: 8px; }
 
 /* FORM */
 .form-body { padding: 0 20px 20px; }
 .form-row  { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .form-group { margin-bottom: 16px; }
-.form-label {
-  font-size: 12px; font-weight: 700; color: var(--gris-600);
-  display: block; margin-bottom: 6px; letter-spacing: .02em;
-}
+.form-label { font-size: 12px; font-weight: 700; color: var(--gris-600); display: block; margin-bottom: 4px; letter-spacing: .02em; }
+.form-hint  { font-size: 11px; color: var(--gris-400); margin-bottom: 6px; font-style: italic; }
 .form-label .req { color: var(--rojo); margin-left: 2px; }
-.form-input, .form-select, .form-textarea {
-  width: 100%; border: 1.5px solid var(--gris-200);
-  background: var(--blanco); color: var(--gris-900);
-  padding: 10px 14px; border-radius: var(--radius);
-  font-family: var(--font); font-size: 14px;
-  transition: all .2s; outline: none; -webkit-appearance: none; appearance: none;
-}
-.form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--azul); box-shadow: 0 0 0 3px rgba(0,56,118,.1);
-}
+.form-input, .form-select, .form-textarea { width: 100%; border: 1.5px solid var(--gris-200); background: var(--blanco); color: var(--gris-900); padding: 10px 14px; border-radius: var(--radius); font-family: var(--font); font-size: 14px; transition: all .2s; outline: none; -webkit-appearance: none; appearance: none; }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--azul); box-shadow: 0 0 0 3px rgba(0,56,118,.1); }
 .form-textarea { resize: vertical; min-height: 88px; }
 .select-wrap { position: relative; }
-.select-wrap::after {
-  content: ''; position: absolute; right: 14px; top: 50%;
-  transform: translateY(-50%); pointer-events: none;
-  border-left: 5px solid transparent; border-right: 5px solid transparent;
-  border-top: 6px solid var(--gris-400);
-}
+.select-wrap::after { content: ''; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--gris-400); }
 
 /* FOTO UPLOAD */
-.foto-upload-zona {
-  border: 2px dashed var(--gris-200); border-radius: var(--radius);
-  padding: 28px 20px; text-align: center; cursor: pointer;
-  position: relative; transition: all .2s; background: var(--gris-100);
-}
+.foto-upload-zona { border: 2px dashed var(--gris-200); border-radius: var(--radius); padding: 28px 20px; text-align: center; cursor: pointer; position: relative; transition: all .2s; background: var(--gris-100); }
 .foto-upload-zona:hover { border-color: var(--azul); background: var(--azul-pale); }
-.foto-upload-zona input[type=file] {
-  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
-}
+.foto-upload-zona input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
 .foto-upload-icon { font-size: 32px; margin-bottom: 8px; }
 .foto-upload-text { font-size: 13px; font-weight: 600; color: var(--azul); margin-bottom: 3px; }
 .foto-upload-hint { font-size: 11px; color: var(--gris-400); }
-.foto-preview-img {
-  width: 100%; max-height: 220px; object-fit: cover;
-  border-radius: var(--radius); margin-top: 14px;
-  display: none; border: 1px solid var(--gris-200);
-}
+.foto-preview-img { width: 100%; max-height: 220px; object-fit: cover; border-radius: var(--radius); margin-top: 14px; display: none; border: 1px solid var(--gris-200); }
 
 /* MENSAJES */
-.msg {
-  font-size: 13px; font-weight: 600; padding: 12px 16px;
-  border-radius: var(--radius); margin: 0 20px 16px;
-  display: none; align-items: center; gap: 8px;
-}
+.msg { font-size: 13px; font-weight: 600; padding: 12px 16px; border-radius: var(--radius); margin: 0 20px 16px; display: none; align-items: center; gap: 8px; }
 .msg.visible { display: flex; }
 .msg-ok   { background: var(--success-bg); color: var(--success); }
 .msg-err  { background: var(--danger-bg);  color: var(--danger);  }
 .msg-info { background: var(--azul-light); color: var(--azul);    }
 
 /* ACCIONES BAR */
-.acciones-bar {
-  padding: 16px 20px; display: flex; gap: 10px;
-  border-top: 1px solid var(--gris-200); background: var(--gris-100);
-}
+.acciones-bar { padding: 16px 20px; display: flex; gap: 10px; border-top: 1px solid var(--gris-200); background: var(--gris-100); }
 
 /* LOADING */
-.loading-wrap {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 80px 0; gap: 16px;
-}
-.spinner {
-  width: 36px; height: 36px;
-  border: 3px solid var(--gris-200); border-top-color: var(--azul);
-  border-radius: 50%; animation: spin .8s linear infinite;
-}
+.loading-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 0; gap: 16px; }
+.spinner { width: 36px; height: 36px; border: 3px solid var(--gris-200); border-top-color: var(--azul); border-radius: 50%; animation: spin .8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .loading-text { font-size: 13px; color: var(--gris-400); font-weight: 500; }
 
@@ -305,11 +169,14 @@ footer { background: var(--azul); margin-top: 32px; }
 .footer-logo   { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.9); margin-bottom: 4px; }
 .footer-desc   { font-size: 11px; color: rgba(255,255,255,.45); }
 
+/* SECCIÓN FORM con fondo diferenciado */
+.form-section { background: var(--gris-100); border-radius: var(--radius); padding: 14px 16px 2px; margin-bottom: 16px; border: 1px solid var(--gris-200); }
+.form-section-title { font-size: 10px; font-weight: 700; color: var(--azul); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+
 @media (max-width: 480px) {
   .form-row   { grid-template-columns: 1fr; }
   .datos-grid { grid-template-columns: 1fr; }
   .bien-nombre-principal { font-size: 18px; }
-  
   .id-banner-code { font-size: 16px; }
 }
 </style>
@@ -368,26 +235,47 @@ footer { background: var(--azul); margin-top: 32px; }
       </div>
 
       <div class="datos-grid">
-        <div class="dato-item full">
-          <div class="dato-label">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            Descripción
-          </div>
-          <div class="dato-valor" id="ficha-descripcion"></div>
+        <!-- Fila 1: Marca y Modelo -->
+        <div class="dato-item">
+          <div class="dato-label">🏷️ Marca</div>
+          <div class="dato-valor" id="ficha-marca"></div>
         </div>
         <div class="dato-item">
-          <div class="dato-label">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            Ubicación
-          </div>
+          <div class="dato-label">🔩 Modelo</div>
+          <div class="dato-valor" id="ficha-modelo"></div>
+        </div>
+        <!-- Fila 2: N° Serie -->
+        <div class="dato-item full">
+          <div class="dato-label">🔢 Número de Serie</div>
+          <div class="dato-valor" id="ficha-numeroSerie"></div>
+        </div>
+        <!-- Fila 3: Descripción -->
+        <div class="dato-item full">
+          <div class="dato-label">📋 Descripción física</div>
+          <div class="dato-valor" id="ficha-descripcion"></div>
+        </div>
+        <!-- Fila 4: Ubicación y Responsable -->
+        <div class="dato-item">
+          <div class="dato-label">📍 Ubicación</div>
           <div class="dato-valor" id="ficha-ubicacion"></div>
         </div>
         <div class="dato-item">
-          <div class="dato-label">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            Responsable
-          </div>
+          <div class="dato-label">👤 Responsable</div>
           <div class="dato-valor" id="ficha-responsable"></div>
+        </div>
+        <!-- Fila 5: Fecha adquisición y Valor -->
+        <div class="dato-item">
+          <div class="dato-label">📅 Fecha de adquisición</div>
+          <div class="dato-valor" id="ficha-fechaAdquisicion"></div>
+        </div>
+        <div class="dato-item">
+          <div class="dato-label">💰 Valor de adquisición</div>
+          <div class="dato-valor" id="ficha-valorAdquisicion"></div>
+        </div>
+        <!-- Fila 6: Observaciones -->
+        <div class="dato-item full">
+          <div class="dato-label">📝 Observaciones</div>
+          <div class="dato-valor" id="ficha-observaciones"></div>
         </div>
       </div>
 
@@ -396,7 +284,6 @@ footer { background: var(--azul); margin-top: 32px; }
         <span id="ficha-fecha">—</span>
       </div>
 
-      <!-- Botón editar (solo editores) -->
       <div id="wrap-btn-editar" style="display:none; padding:16px 20px 20px;">
         <button class="btn-primary btn-rojo" onclick="mostrarEditor()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.1 2.1 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
@@ -404,7 +291,6 @@ footer { background: var(--azul); margin-top: 32px; }
         </button>
       </div>
 
-      <!-- Login para editores -->
       <div id="login-panel-ficha" style="display:none">
         <div style="height:1px;background:var(--gris-200)"></div>
         <div class="login-promo">
@@ -483,54 +369,117 @@ footer { background: var(--azul); margin-top: 32px; }
 
       <div id="msg-editor" class="msg"></div>
 
-      <!-- Identificación -->
-      <div class="card-section-title">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg>
-        Identificación del Activo
+      <!-- SECCIÓN 1: Obligatorios -->
+      <div class="card-section-title" style="background:var(--rojo-light); color:var(--rojo);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Datos obligatorios
       </div>
-      <div class="form-body">
+      <div class="form-body" style="padding-top:16px">
         <div class="form-group">
           <label class="form-label">Nombre del Activo <span class="req">*</span></label>
-          <input class="form-input" type="text" id="ed-nombre" placeholder="Ej: Escritorio de melanina color madera" maxlength="120">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Descripción</label>
-          <textarea class="form-textarea" id="ed-descripcion" placeholder="Características, modelo, color, dimensiones, número de serie, observaciones..."></textarea>
+          <div class="form-hint">Nombre descriptivo del bien. Ej: "Escritorio de melanina color nogal"</div>
+          <input class="form-input" type="text" id="ed-nombre" placeholder="Ej: Escritorio de melanina color nogal" maxlength="120">
         </div>
         <div class="form-row">
-          <div class="form-group">
+          <div class="form-group" style="margin-bottom:0">
             <label class="form-label">Estado <span class="req">*</span></label>
+            <div class="form-hint">Condición física actual del bien</div>
             <div class="select-wrap">
               <select class="form-select" id="ed-estado">
                 <option value="">Seleccionar...</option>
-                <option value="Bueno">✅ Bueno</option>
-                <option value="Regular">⚠️ Regular</option>
-                <option value="Malo">❌ Malo</option>
+                <option value="Bueno">✅ Bueno — funciona correctamente</option>
+                <option value="Regular">⚠️ Regular — con desgaste o fallas leves</option>
+                <option value="Malo">❌ Malo — inoperativo o daño grave</option>
               </select>
             </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Responsable</label>
-            <input class="form-input" type="text" id="ed-responsable" placeholder="Nombre completo">
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label">Ubicación <span class="req">*</span></label>
+            <div class="form-hint">Ambiente o área donde se encuentra</div>
+            <input class="form-input" type="text" id="ed-ubicacion" placeholder="Ej: Oficina 204 — 2do piso">
           </div>
-        </div>
-        <div class="form-group" style="margin-bottom:0">
-          <label class="form-label">Ubicación</label>
-          <input class="form-input" type="text" id="ed-ubicacion" placeholder="Ej: Oficina 2do piso — Ambiente 204">
         </div>
       </div>
 
-      <!-- Foto -->
+      <!-- SECCIÓN 2: Identificación técnica -->
+      <div class="card-section-title" style="margin-top:8px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="14" y2="13"/></svg>
+        Identificación técnica <span style="font-weight:400;color:var(--gris-400);margin-left:6px">(opcional)</span>
+      </div>
+      <div class="form-body" style="padding-top:16px">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Marca</label>
+            <div class="form-hint">Fabricante del bien. Ej: "Samsung", "HP"</div>
+            <input class="form-input" type="text" id="ed-marca" placeholder="Ej: Samsung">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Modelo</label>
+            <div class="form-hint">Modelo exacto si está visible en el bien</div>
+            <input class="form-input" type="text" id="ed-modelo" placeholder="Ej: Galaxy A54">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label">Número de serie</label>
+          <div class="form-hint">Código único del fabricante, generalmente en una etiqueta del bien</div>
+          <input class="form-input" type="text" id="ed-numeroSerie" placeholder="Ej: SN-2024-XR447821">
+        </div>
+      </div>
+
+      <!-- SECCIÓN 3: Descripción y responsable -->
+      <div class="card-section-title" style="margin-top:8px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Descripción y responsable <span style="font-weight:400;color:var(--gris-400);margin-left:6px">(opcional)</span>
+      </div>
+      <div class="form-body" style="padding-top:16px">
+        <div class="form-group">
+          <label class="form-label">Descripción física</label>
+          <div class="form-hint">Características visibles: color, material, dimensiones, accesorios incluidos</div>
+          <textarea class="form-textarea" id="ed-descripcion" placeholder="Ej: Color negro, estructura metálica, incluye soporte de monitor y cajones laterales"></textarea>
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label">Responsable</label>
+          <div class="form-hint">Persona a cargo de este bien actualmente</div>
+          <input class="form-input" type="text" id="ed-responsable" placeholder="Ej: Juan Pérez Mamani">
+        </div>
+      </div>
+
+      <!-- SECCIÓN 4: Datos económicos -->
+      <div class="card-section-title" style="margin-top:8px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        Datos económicos <span style="font-weight:400;color:var(--gris-400);margin-left:6px">(opcional)</span>
+      </div>
+      <div class="form-body" style="padding-top:16px">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Fecha de adquisición</label>
+            <div class="form-hint">Cuándo fue comprado o asignado</div>
+            <input class="form-input" type="date" id="ed-fechaAdquisicion">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Valor de adquisición (S/.)</label>
+            <div class="form-hint">Precio de compra en soles</div>
+            <input class="form-input" type="number" id="ed-valorAdquisicion" placeholder="Ej: 1200.00" min="0" step="0.01">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label">Observaciones</label>
+          <div class="form-hint">Incidencias, reparaciones, faltantes o cualquier nota de seguimiento</div>
+          <textarea class="form-textarea" id="ed-observaciones" placeholder="Ej: Le falta la tapa del puerto USB. Fue reparado en enero 2024."></textarea>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 5: Foto -->
       <div class="card-section-title" style="margin-top:8px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-        Fotografía del Activo
+        Fotografía del Activo <span style="font-weight:400;color:var(--gris-400);margin-left:6px">(opcional)</span>
       </div>
-      <div class="form-body">
+      <div class="form-body" style="padding-top:16px">
         <div class="foto-upload-zona" onclick="document.getElementById('ed-foto-input').click()">
           <input type="file" id="ed-foto-input" accept="image/*" capture="environment" onchange="previsualizarFoto(this)">
           <div class="foto-upload-icon">📸</div>
           <div class="foto-upload-text">Toca para tomar foto o elegir imagen</div>
-          <div class="foto-upload-hint">Se recomienda foto clara, bien iluminada, desde un ángulo frontal</div>
+          <div class="foto-upload-hint">Foto clara, bien iluminada, ángulo frontal del bien</div>
           <img id="ed-foto-preview" class="foto-preview-img">
         </div>
       </div>
@@ -556,7 +505,7 @@ footer { background: var(--azul); margin-top: 32px; }
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
-const BACKEND_URL   = 'https://script.google.com/macros/s/AKfycbz550VwJyqYkG_9XOQ_k3fS_eSWR8OYXe1LQ4_kRLHS2untghVV_jWWEOCjC5mfLsn1/exec';
+const BACKEND_URL      = 'https://script.google.com/macros/s/AKfycbz550VwJyqYkG_9XOQ_k3fS_eSWR8OYXe1LQ4_kRLHS2untghVV_jWWEOCjC5mfLsn1/exec';
 const GOOGLE_CLIENT_ID = '792461026880-h9sabqnnp201t412hqgqlth69aeeojqd.apps.googleusercontent.com';
 
 let estado = { id:null, bien:null, emailEditor:null, esAutorizado:false, fotoBase64:null, fotoTipo:null };
@@ -566,7 +515,7 @@ window.addEventListener('DOMContentLoaded', () => {
   estado.id = params.get('id');
   if (!estado.id) {
     document.getElementById('vista-loading').innerHTML =
-      `<div class="loading-wrap"><div style="font-size:48px">⚠️</div><span class="loading-text">Por Favor Escanee un QR válido</span></div>`;
+      `<div class="loading-wrap"><div style="font-size:48px">⚠️</div><span class="loading-text">Por favor escanee un QR válido</span></div>`;
     return;
   }
   const saved = localStorage.getItem('editor_email');
@@ -597,28 +546,47 @@ async function cargarBien() {
   }
 }
 
+function val(v) {
+  // Retorna el valor o un span con "—" en gris si está vacío
+  return v ? v : '<span class="dato-vacio">—</span>';
+}
+
 function renderizarFicha(bien) {
-  document.getElementById('ficha-id').textContent          = bien.id || estado.id;
-  document.getElementById('ficha-nombre').textContent      = bien.nombre      || '(Sin nombre)';
-  document.getElementById('ficha-descripcion').textContent = bien.descripcion || '—';
-  document.getElementById('ficha-ubicacion').textContent   = bien.ubicacion   || '—';
-  document.getElementById('ficha-responsable').textContent = bien.responsable || '—';
+  document.getElementById('ficha-id').textContent   = bien.id || estado.id;
+  document.getElementById('ficha-nombre').textContent = bien.nombre || '(Sin nombre)';
 
-  const dv = document.getElementById('ficha-descripcion');
-  if (!bien.descripcion) dv.classList.add('dato-vacio');
+  // Campos con val()
+  document.getElementById('ficha-marca').innerHTML          = val(bien.marca);
+  document.getElementById('ficha-modelo').innerHTML         = val(bien.modelo);
+  document.getElementById('ficha-numeroSerie').innerHTML    = val(bien.numeroSerie);
+  document.getElementById('ficha-descripcion').innerHTML    = val(bien.descripcion);
+  document.getElementById('ficha-ubicacion').innerHTML      = val(bien.ubicacion);
+  document.getElementById('ficha-responsable').innerHTML    = val(bien.responsable);
+  document.getElementById('ficha-observaciones').innerHTML  = val(bien.observaciones);
 
+  // Fecha adquisición
+  const fa = bien.fechaAdquisicion ? new Date(bien.fechaAdquisicion).toLocaleDateString('es-PE',{day:'2-digit',month:'long',year:'numeric'}) : '';
+  document.getElementById('ficha-fechaAdquisicion').innerHTML = val(fa);
+
+  // Valor adquisición
+  const va = bien.valorAdquisicion ? 'S/. ' + parseFloat(bien.valorAdquisicion).toLocaleString('es-PE',{minimumFractionDigits:2}) : '';
+  document.getElementById('ficha-valorAdquisicion').innerHTML = val(va);
+
+  // Fecha registro
   if (bien.fechaRegistro) {
     const f = new Date(bien.fechaRegistro);
     document.getElementById('ficha-fecha').textContent =
-      'Registrado el ' + f.toLocaleDateString('es-PE', {day:'2-digit', month:'long', year:'numeric'});
+      'Registrado el ' + f.toLocaleDateString('es-PE',{day:'2-digit',month:'long',year:'numeric'});
   }
 
+  // Badge estado
   const badge = document.getElementById('ficha-badge');
   const txt   = document.getElementById('ficha-estado-txt');
   const e = (bien.estado||'').toLowerCase();
   badge.className = 'badge-estado ' + ({bueno:'badge-bueno',regular:'badge-regular',malo:'badge-malo'}[e]||'badge-sin');
   txt.textContent = bien.estado || 'Sin estado';
 
+  // Foto
   const wrap = document.getElementById('ficha-foto-wrap');
   wrap.innerHTML = bien.foto
     ? `<img src="${bien.foto}" class="foto-bien" alt="Foto del Activo">`
@@ -626,7 +594,7 @@ function renderizarFicha(bien) {
 }
 
 function loginGoogle() {
-  if (GOOGLE_CLIENT_ID === 'TU_GOOGLE_CLIENT_ID') {
+  if (GOOGLE_CLIENT_ID === 'PENDIENTE') {
     const email = prompt('Ingresa tu correo Gmail autorizado:');
     if (email) verificarEditor(email.trim().toLowerCase(), true);
     return;
@@ -689,11 +657,18 @@ function actualizarUIRoles() {
 function mostrarEditor() {
   document.getElementById('editor-id').textContent = estado.id;
   if (estado.bien) {
-    document.getElementById('ed-nombre').value      = estado.bien.nombre      || '';
-    document.getElementById('ed-descripcion').value = estado.bien.descripcion || '';
-    document.getElementById('ed-estado').value      = estado.bien.estado      || '';
-    document.getElementById('ed-ubicacion').value   = estado.bien.ubicacion   || '';
-    document.getElementById('ed-responsable').value = estado.bien.responsable || '';
+    const b = estado.bien;
+    document.getElementById('ed-nombre').value          = b.nombre          || '';
+    document.getElementById('ed-marca').value           = b.marca           || '';
+    document.getElementById('ed-modelo').value          = b.modelo          || '';
+    document.getElementById('ed-numeroSerie').value     = b.numeroSerie     || '';
+    document.getElementById('ed-descripcion').value     = b.descripcion     || '';
+    document.getElementById('ed-estado').value          = b.estado          || '';
+    document.getElementById('ed-ubicacion').value       = b.ubicacion       || '';
+    document.getElementById('ed-responsable').value     = b.responsable     || '';
+    document.getElementById('ed-fechaAdquisicion').value= b.fechaAdquisicion|| '';
+    document.getElementById('ed-valorAdquisicion').value= b.valorAdquisicion|| '';
+    document.getElementById('ed-observaciones').value   = b.observaciones   || '';
   }
   mostrarVista('editor');
 }
@@ -714,10 +689,12 @@ function previsualizarFoto(input) {
 
 async function guardarBien() {
   if (!estado.esAutorizado) return;
-  const nombre    = document.getElementById('ed-nombre').value.trim();
+  const nombre     = document.getElementById('ed-nombre').value.trim();
   const estadoBien = document.getElementById('ed-estado').value;
+  const ubicacion  = document.getElementById('ed-ubicacion').value.trim();
   if (!nombre)     { mostrarMsg('El nombre del Activo es obligatorio.', 'err'); return; }
   if (!estadoBien) { mostrarMsg('Debes seleccionar el estado del Activo.', 'err'); return; }
+  if (!ubicacion)  { mostrarMsg('La ubicación es obligatoria.', 'err'); return; }
 
   const btn = document.getElementById('btn-guardar');
   btn.disabled = true;
@@ -737,13 +714,20 @@ async function guardarBien() {
 
     mostrarMsg('Guardando en el registro...', 'info');
     const payload = {
-      accion:'guardar', email:estado.emailEditor, id:estado.id, nombre,
-      descripcion: document.getElementById('ed-descripcion').value.trim(),
-      estado:      estadoBien,
-      ubicacion:   document.getElementById('ed-ubicacion').value.trim(),
-      responsable: document.getElementById('ed-responsable').value.trim(),
-      foto:        urlFoto,
-      fechaRegistro: estado.bien?.fechaRegistro || new Date().toISOString()
+      accion:'guardar', email:estado.emailEditor, id:estado.id,
+      nombre,
+      marca:            document.getElementById('ed-marca').value.trim(),
+      modelo:           document.getElementById('ed-modelo').value.trim(),
+      numeroSerie:      document.getElementById('ed-numeroSerie').value.trim(),
+      descripcion:      document.getElementById('ed-descripcion').value.trim(),
+      estado:           estadoBien,
+      ubicacion,
+      responsable:      document.getElementById('ed-responsable').value.trim(),
+      fechaAdquisicion: document.getElementById('ed-fechaAdquisicion').value,
+      valorAdquisicion: document.getElementById('ed-valorAdquisicion').value,
+      observaciones:    document.getElementById('ed-observaciones').value.trim(),
+      foto:             urlFoto,
+      fechaRegistro:    estado.bien?.fechaRegistro || new Date().toISOString()
     };
     const res  = await fetch(BACKEND_URL, { method:'POST', body: JSON.stringify(payload) });
     const data = await res.json();
