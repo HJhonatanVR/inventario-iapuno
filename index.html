@@ -53,11 +53,11 @@ header {
   height: 62px;
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
-.header-brand { display: flex; align-items: center; gap: 10px; }
+.header-brand { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
 .sunat-emblem { width: 34px; height: 34px; flex-shrink: 0; }
 .header-texts { display: flex; flex-direction: column; line-height: 1.2; }
-.header-name  { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .02em; }
-.header-sub   { font-size: 10px; color: rgba(255,255,255,.6); letter-spacing: .04em; text-transform: uppercase; }
+.header-name  { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.header-sub   { font-size: 10px; color: rgba(255,255,255,.6); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .header-stripe { height: 3px; background: var(--rojo); }
 
 #btn-login {
@@ -66,7 +66,9 @@ header {
   padding: 7px 16px; border-radius: 99px; cursor: pointer;
   display: flex; align-items: center; gap: 6px;
   transition: all .2s; white-space: nowrap;
+  max-width: 140px; overflow: hidden;
 }
+#btn-login span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #btn-login:hover { background: rgba(255,255,255,.22); }
 #btn-login.autenticado { background: var(--rojo); border-color: var(--rojo); }
 
