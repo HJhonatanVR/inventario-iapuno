@@ -179,9 +179,72 @@ footer { background: var(--azul); margin-top: 32px; }
   .bien-nombre-principal { font-size: 18px; }
   .id-banner-code { font-size: 16px; }
 }
+
+/* ── MODAL ALERTAS ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,.5);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: fadeIn .18s ease;
+}
+.modal-overlay.oculto { display: none; }
+@keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+
+.modal-box {
+  background: white; border-radius: 20px;
+  padding: 32px 28px 24px;
+  max-width: 340px; width: 100%;
+  text-align: center;
+  animation: slideUp .2s ease;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity:0 } to { transform: translateY(0); opacity:1 } }
+
+.modal-icono { font-size: 52px; margin-bottom: 14px; line-height: 1; }
+.modal-titulo { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.modal-desc   { font-size: 14px; color: var(--gris-600); line-height: 1.6; margin-bottom: 24px; }
+
+.modal-btn {
+  width: 100%; padding: 13px; border: none; border-radius: var(--radius);
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: all .2s;
+}
+.modal-btn-ok      { background: var(--azul);    color: white; }
+.modal-btn-ok:hover{ background: var(--azul-mid);}
+.modal-btn-err     { background: var(--danger);   color: white; }
+.modal-btn-err:hover{ background: #991414; }
+
+/* Modal de progreso — sin botón, solo spinner */
+.modal-progress .modal-spinner {
+  width: 44px; height: 44px;
+  border: 4px solid var(--gris-200); border-top-color: var(--azul);
+  border-radius: 50%; animation: spin .8s linear infinite;
+  margin: 0 auto 16px;
+}
+.modal-progress .modal-titulo { color: var(--azul); }
 </style>
 </head>
 <body>
+
+<!-- MODAL ALERTAS -->
+<div class="modal-overlay oculto" id="modal-overlay">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-icono" id="modal-icono"></div>
+    <div class="modal-titulo" id="modal-titulo"></div>
+    <div class="modal-desc"   id="modal-desc"></div>
+    <button class="modal-btn" id="modal-btn" onclick="cerrarModal()"></button>
+  </div>
+</div>
+
+<!-- MODAL PROGRESO (sin botón) -->
+<div class="modal-overlay oculto" id="modal-progreso">
+  <div class="modal-box modal-progress">
+    <div class="modal-spinner"></div>
+    <div class="modal-titulo" id="progreso-titulo">Procesando...</div>
+    <div class="modal-desc"   id="progreso-desc"></div>
+  </div>
+</div>
 
 <header>
   <div class="header-inner">
@@ -543,6 +606,8 @@ async function cargarBien() {
     document.getElementById('vista-loading').innerHTML =
       `<div class="loading-wrap"><div style="font-size:48px">❌</div><span class="loading-text">Error de conexión: ${err.message}</span></div>`;
     mostrarVista('loading');
+    mostrarModal('err', '📡', 'Error de conexión', 'No se pudo conectar con el servidor. Verifica tu conexión a internet e intenta nuevamente.\n\nDetalle: ' + err.message, 'Reintentar');
+    document.getElementById('modal-btn').onclick = () => { cerrarModal(); cargarBien(); };
   }
 }
 
@@ -692,9 +757,20 @@ async function guardarBien() {
   const nombre     = document.getElementById('ed-nombre').value.trim();
   const estadoBien = document.getElementById('ed-estado').value;
   const ubicacion  = document.getElementById('ed-ubicacion').value.trim();
-  if (!nombre)     { mostrarMsg('El nombre del Activo es obligatorio.', 'err'); return; }
-  if (!estadoBien) { mostrarMsg('Debes seleccionar el estado del Activo.', 'err'); return; }
-  if (!ubicacion)  { mostrarMsg('La ubicación es obligatoria.', 'err'); return; }
+
+  // Validaciones con modal de error
+  if (!nombre) {
+    mostrarModal('err', '✏️', 'Nombre obligatorio', 'Debes ingresar el nombre del activo para poder registrarlo.', 'Entendido');
+    return;
+  }
+  if (!estadoBien) {
+    mostrarModal('err', '⚠️', 'Estado obligatorio', 'Debes seleccionar el estado actual del activo (Bueno, Regular o Malo).', 'Entendido');
+    return;
+  }
+  if (!ubicacion) {
+    mostrarModal('err', '📍', 'Ubicación obligatoria', 'Debes indicar en qué ambiente o área se encuentra el activo.', 'Entendido');
+    return;
+  }
 
   const btn = document.getElementById('btn-guardar');
   btn.disabled = true;
@@ -703,40 +779,59 @@ async function guardarBien() {
   try {
     let urlFoto = estado.bien?.foto || '';
     if (estado.fotoBase64) {
-      mostrarMsg('Subiendo fotografía...', 'info');
+      mostrarProgreso('Subiendo fotografía...', 'Esto puede tardar unos segundos según el tamaño de la imagen.');
       const rf = await fetch(BACKEND_URL, { method:'POST', body: JSON.stringify({
         accion:'subirFoto', email:estado.emailEditor,
         base64:estado.fotoBase64, tipo:estado.fotoTipo, nombre:`${estado.id}_${Date.now()}.jpg`
       })});
       const df = await rf.json();
       if (df.ok) urlFoto = df.url;
+      else throw new Error('No se pudo subir la fotografía. Intenta con una imagen más pequeña.');
     }
 
-    mostrarMsg('Guardando en el registro...', 'info');
+    mostrarProgreso('Guardando en el registro...', 'Registrando la información del activo en la base de datos.');
+
+    // Capitaliza primera letra
+    const cap      = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+    const capWords = s => s ? s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : '';
+
     const payload = {
       accion:'guardar', email:estado.emailEditor, id:estado.id,
-      nombre,
-      marca:            document.getElementById('ed-marca').value.trim(),
-      modelo:           document.getElementById('ed-modelo').value.trim(),
+      nombre:           cap(nombre),
+      marca:            cap(document.getElementById('ed-marca').value.trim()),
+      modelo:           cap(document.getElementById('ed-modelo').value.trim()),
       numeroSerie:      document.getElementById('ed-numeroSerie').value.trim(),
-      descripcion:      document.getElementById('ed-descripcion').value.trim(),
+      descripcion:      cap(document.getElementById('ed-descripcion').value.trim()),
       estado:           estadoBien,
-      ubicacion,
-      responsable:      document.getElementById('ed-responsable').value.trim(),
+      ubicacion:        cap(ubicacion),
+      responsable:      capWords(document.getElementById('ed-responsable').value.trim()),
       fechaAdquisicion: document.getElementById('ed-fechaAdquisicion').value,
       valorAdquisicion: document.getElementById('ed-valorAdquisicion').value,
-      observaciones:    document.getElementById('ed-observaciones').value.trim(),
+      observaciones:    cap(document.getElementById('ed-observaciones').value.trim()),
       foto:             urlFoto,
       fechaRegistro:    estado.bien?.fechaRegistro || new Date().toISOString()
     };
+
     const res  = await fetch(BACKEND_URL, { method:'POST', body: JSON.stringify(payload) });
     const data = await res.json();
+    ocultarProgreso();
+
     if (data.ok) {
-      mostrarMsg('✅ Activo guardado correctamente.', 'ok');
-      setTimeout(() => cargarBien(), 1800);
-    } else throw new Error(data.error || 'Error desconocido');
+      const esNuevo = !estado.bien;
+      mostrarModal('ok', '✅', esNuevo ? '¡Activo registrado!' : '¡Activo actualizado!',
+        esNuevo
+          ? `El activo "${cap(nombre)}" fue registrado correctamente en el sistema.`
+          : `Los datos de "${cap(nombre)}" fueron actualizados correctamente.`,
+        'Ver ficha');
+      // Al cerrar el modal, recargar la ficha
+      document.getElementById('modal-btn').onclick = () => { cerrarModal(); cargarBien(); };
+    } else {
+      throw new Error(data.error || 'Error desconocido al guardar.');
+    }
+
   } catch(err) {
-    mostrarMsg('Error: ' + err.message, 'err');
+    ocultarProgreso();
+    mostrarModal('err', '❌', 'Error al guardar', err.message, 'Intentar de nuevo');
   } finally {
     btn.disabled = false;
     btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17,21 17,13 7,13 7,21"/><polyline points="7,3 7,8 15,8"/></svg> Registrar Activo`;
@@ -748,10 +843,36 @@ function mostrarVista(v) {
     document.getElementById('vista-' + n).style.display = n === v ? 'block' : 'none');
 }
 
+/* ── MODALES ── */
+function mostrarModal(tipo, icono, titulo, desc, btnTexto) {
+  // tipo: 'ok' | 'err'
+  document.getElementById('modal-icono').textContent  = icono;
+  document.getElementById('modal-titulo').textContent = titulo;
+  document.getElementById('modal-desc').textContent   = desc;
+  const btn = document.getElementById('modal-btn');
+  btn.textContent = btnTexto || 'Aceptar';
+  btn.className = 'modal-btn ' + (tipo === 'ok' ? 'modal-btn-ok' : 'modal-btn-err');
+  document.getElementById('modal-overlay').classList.remove('oculto');
+}
+
+function cerrarModal() {
+  document.getElementById('modal-overlay').classList.add('oculto');
+}
+
+function mostrarProgreso(titulo, desc) {
+  document.getElementById('progreso-titulo').textContent = titulo;
+  document.getElementById('progreso-desc').textContent   = desc || '';
+  document.getElementById('modal-progreso').classList.remove('oculto');
+}
+
+function ocultarProgreso() {
+  document.getElementById('modal-progreso').classList.add('oculto');
+}
+
+// Mantener compatibilidad con llamadas antiguas a mostrarMsg
 function mostrarMsg(texto, tipo) {
   const el = document.getElementById('msg-editor');
-  el.textContent = texto;
-  el.className = 'msg' + (texto ? ' visible msg-' + tipo : '');
+  if (el) { el.textContent = texto; el.className = 'msg' + (texto ? ' visible msg-' + tipo : ''); }
 }
 </script>
 </body>
