@@ -614,8 +614,14 @@ window.addEventListener('DOMContentLoaded', () => {
       `<div class="loading-wrap"><div style="font-size:48px">⚠️</div><span class="loading-text">Por favor escanee un QR válido</span></div>`;
     return;
   }
-  const saved = localStorage.getItem('editor_email');
-  if (saved) verificarEditor(saved, false);
+  const saved    = localStorage.getItem('editor_email');
+const expira   = localStorage.getItem('editor_expira');
+if (saved && expira && Date.now() < parseInt(expira)) {
+  verificarEditor(saved, false);
+} else {
+  localStorage.removeItem('editor_email');
+  localStorage.removeItem('editor_expira');
+}
   cargarBien();
 });
 
@@ -717,6 +723,7 @@ async function verificarEditor(email, mostrarResultado) {
     estado.esAutorizado = data.autorizado;
     if (data.autorizado) {
       localStorage.setItem('editor_email', email);
+localStorage.setItem('editor_expira', Date.now() + 8 * 60 * 60 * 1000);
       document.getElementById('btn-login-text').textContent = email.split('@')[0];
       document.getElementById('btn-login').classList.add('autenticado');
     } else {
